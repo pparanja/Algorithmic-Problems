@@ -65,7 +65,8 @@ class Problem {
 
 class UnionFind {
     vector<int> parent;
-    
+    vector<int> rank;
+
     void makeSet(vector<int>& input) {
         parent.resize(input.size());
         for (auto i : input) {
@@ -85,7 +86,12 @@ class UnionFind {
         int p2 = findSet(data2);
 
         if (p1 != p2) {
-            parent[data2] = p1;
+            if (rank[p1] >= rank[p2]) {
+                parent[p2] = p1;
+                rank[p1] = (rank[p1] == rank[p2]) ? rank[p1]++ : rank[p1];
+            } else {
+                parent[p1] = p2;
+            }
         }
     }
 };
