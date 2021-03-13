@@ -1,3 +1,9 @@
+/*
+Application : This is used in finding connected components of a graph
+
+
+*/
+
 class UnionFind {
     unordered_map<int,Node*> dataNode;
 
